@@ -90,6 +90,9 @@ export interface AppState {
   styleTheme: StyleTheme
   language: 'zh-CN' | 'en-US'
 
+  // 高级菜单显示状态（学习中心、设置等）
+  showAdvancedMenu: boolean
+
   // 网络状态
   isOnline: boolean
   apiConnected: boolean
@@ -125,11 +128,15 @@ export const useAppStore = defineStore('app', {
     styleTheme: (useStorage('app-style-theme', 'indigo-fintech').value || 'indigo-fintech') as StyleTheme,
     language: (useStorage('app-language', 'zh-CN').value || 'zh-CN') as 'zh-CN' | 'en-US',
 
+    // 高级菜单默认隐藏
+    showAdvancedMenu: useStorage('show-advanced-menu', false).value || false,
+
     isOnline: navigator.onLine,
     apiConnected: false,
     lastApiCheck: 0,
 
-    sidebarCollapsed: useStorage('sidebar-collapsed', false).value || false,
+    // 侧边栏默认折叠（更改 key 名称强制使用新默认值）
+    sidebarCollapsed: useStorage('sidebar-collapsed-v2', true).value ?? true,
     sidebarWidth: useStorage('sidebar-width', 240).value || 240,
 
     currentRoute: null,
@@ -271,13 +278,14 @@ export const useAppStore = defineStore('app', {
     // 切换侧边栏
     toggleSidebar() {
       this.sidebarCollapsed = !this.sidebarCollapsed
+      localStorage.setItem('sidebar-collapsed-v2', String(this.sidebarCollapsed))
     },
     
     // 设置侧边栏状态
     setSidebarCollapsed(collapsed: boolean) {
       this.sidebarCollapsed = collapsed
       // 同步到 localStorage
-      localStorage.setItem('sidebar-collapsed', String(collapsed))
+      localStorage.setItem('sidebar-collapsed-v2', String(collapsed))
     },
 
     // 设置侧边栏宽度
@@ -384,6 +392,12 @@ export const useAppStore = defineStore('app', {
       this.loading = false
       this.loadingProgress = 0
       this.currentRoute = null
+    },
+
+    // 切换高级菜单显示状态
+    toggleAdvancedMenu() {
+      this.showAdvancedMenu = !this.showAdvancedMenu
+      localStorage.setItem('show-advanced-menu', String(this.showAdvancedMenu))
     }
   }
 })

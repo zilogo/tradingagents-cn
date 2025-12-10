@@ -11,7 +11,8 @@
       <template #title>仪表板</template>
     </el-menu-item>
 
-    <el-menu-item index="/learning">
+    <!-- 学习中心 - 默认隐藏，通过底部 reserved 链接切换显示 -->
+    <el-menu-item index="/learning" v-if="appStore.showAdvancedMenu">
       <el-icon><Reading /></el-icon>
       <template #title>学习中心</template>
     </el-menu-item>
@@ -56,7 +57,8 @@
     </el-menu-item>
     -->
 
-    <el-sub-menu index="/settings">
+    <!-- 设置 - 默认隐藏，通过底部 reserved 链接切换显示 -->
+    <el-sub-menu index="/settings" v-if="appStore.showAdvancedMenu">
       <template #title>
         <el-icon><Setting /></el-icon>
         <span>设置</span>
@@ -91,10 +93,13 @@
       </el-sub-menu>
     </el-sub-menu>
 
+    <!-- 关于 - 临时隐藏 -->
+    <!--
     <el-menu-item index="/about">
       <el-icon><InfoFilled /></el-icon>
       <template #title>关于</template>
     </el-menu-item>
+    -->
   </el-menu>
 </template>
 

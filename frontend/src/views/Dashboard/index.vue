@@ -24,7 +24,8 @@
     </div>
 
 
-    <!-- 学习中心推荐卡片 -->
+    <!-- 学习中心推荐卡片 - 临时隐藏 -->
+    <!--
     <el-card class="learning-highlight-card">
       <div class="learning-highlight">
         <div class="learning-icon">
@@ -50,6 +51,7 @@
         </div>
       </div>
     </el-card>
+    -->
 
     <!-- 主要功能区域 -->
     <el-row :gutter="24" class="main-content">

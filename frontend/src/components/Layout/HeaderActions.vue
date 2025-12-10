@@ -19,12 +19,14 @@
       </el-badge>
     </el-tooltip>
 
-    <!-- 帮助 -->
+    <!-- 帮助 - 临时隐藏 -->
+    <!--
     <el-tooltip content="帮助" placement="bottom">
       <el-button type="text" @click="showHelp" class="action-btn">
         <el-icon><QuestionFilled /></el-icon>
       </el-button>
     </el-tooltip>
+    -->
 
     <!-- 通知抽屉（方案B） -->
     <el-drawer v-model="drawerVisible" direction="rtl" size="360px" :with-header="true" title="消息中心">
