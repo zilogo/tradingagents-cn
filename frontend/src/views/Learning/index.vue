@@ -181,8 +181,8 @@ const openArticle = (articleId: string) => {
     text-align: center;
     margin-bottom: 48px;
     padding: 40px 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 16px;
+    background: var(--style-gradient-primary);
+    border-radius: var(--style-border-radius-xl);
     color: white;
 
     h1 {

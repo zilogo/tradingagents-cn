@@ -1400,16 +1400,16 @@ function exportReport() {
 
 /* 投资建议盒子 - 重点突出 */
 .recommendation-box {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
+  background: var(--style-gradient-primary);
+  border-radius: var(--style-border-radius-lg);
   padding: 20px 24px;
-  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.25);
+  box-shadow: 0 4px 16px rgba(var(--style-primary-rgb), 0.25);
   transition: all 0.3s ease;
   margin: 16px 0;
 }
 
 .recommendation-box:hover {
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
+  box-shadow: 0 6px 20px rgba(var(--style-primary-rgb), 0.35);
   transform: translateY(-2px);
 }
 

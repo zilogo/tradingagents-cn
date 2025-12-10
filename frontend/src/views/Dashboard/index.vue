@@ -624,8 +624,8 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .dashboard {
   .welcome-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 12px;
+    background: var(--style-gradient-primary);
+    border-radius: var(--style-border-radius-lg);
     padding: 40px;
     color: white;
     margin-bottom: 24px;
@@ -666,8 +666,8 @@ onMounted(async () => {
 
   .learning-highlight-card {
     margin-bottom: 24px;
-    border: 2px solid var(--el-color-primary);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    border: 2px solid var(--style-primary);
+    box-shadow: 0 4px 12px rgba(var(--style-primary-rgb), 0.15);
 
     .learning-highlight {
       display: flex;
@@ -679,8 +679,8 @@ onMounted(async () => {
         flex-shrink: 0;
         width: 80px;
         height: 80px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: var(--style-border-radius-md);
+        background: var(--style-gradient-primary);
         display: flex;
         align-items: center;
         justify-content: center;

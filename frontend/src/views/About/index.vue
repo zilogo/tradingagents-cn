@@ -467,8 +467,8 @@ const viewDocumentation = () => {
 
   // Hero Section
   .hero-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 16px;
+    background: var(--style-gradient-primary);
+    border-radius: var(--style-border-radius-xl);
     padding: 60px 40px;
     margin-bottom: 48px;
     color: white;
@@ -573,7 +573,7 @@ const viewDocumentation = () => {
 
           &.el-button--primary {
             background: white;
-            color: #667eea;
+            color: var(--style-primary);
             border: none;
 
             &:hover {
@@ -701,7 +701,7 @@ const viewDocumentation = () => {
             color: white;
 
             &.primary {
-              background: linear-gradient(135deg, var(--el-color-primary), #667eea);
+              background: var(--style-gradient-primary);
             }
 
             &.success {
@@ -774,7 +774,7 @@ const viewDocumentation = () => {
           left: 0;
           right: 0;
           height: 4px;
-          background: linear-gradient(90deg, #667eea, #764ba2);
+          background: var(--style-gradient-primary);
         }
 
         .origin-header {
@@ -788,8 +788,8 @@ const viewDocumentation = () => {
           .origin-icon {
             width: 64px;
             height: 64px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: var(--style-border-radius-lg);
+            background: var(--style-gradient-primary);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -823,7 +823,7 @@ const viewDocumentation = () => {
               }
 
               &:hover {
-                color: #667eea;
+                color: var(--style-primary);
                 text-decoration: underline;
               }
             }
@@ -877,9 +877,9 @@ const viewDocumentation = () => {
             gap: 8px;
             margin-top: 32px;
             padding: 20px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            background: var(--style-gradient-subtle);
             border-radius: 12px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid var(--style-primary);
             font-size: 15px;
             color: var(--el-text-color-regular);
 
@@ -995,8 +995,8 @@ const viewDocumentation = () => {
       gap: 32px;
 
       .version-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 16px;
+        background: var(--style-gradient-primary);
+        border-radius: var(--style-border-radius-xl);
         padding: 32px;
         color: white;
         position: relative;
@@ -1151,7 +1151,7 @@ const viewDocumentation = () => {
           }
 
           &.docs {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--style-gradient-primary);
           }
         }
 
