@@ -359,6 +359,106 @@ const routes: RouteRecordRaw[] = [
       transition: 'fade'
     }
   },
+  // 风格演示页面
+  {
+    path: '/style-demo',
+    name: 'StyleDemo',
+    component: () => import('@/views/StyleDemo/index.vue'),
+    meta: {
+      title: '风格方案评审',
+      hideInMenu: true,
+      requiresAuth: false,
+      transition: 'fade'
+    }
+  },
+  {
+    path: '/style-demo/a',
+    name: 'StyleDemoA',
+    component: () => import('@/views/StyleDemo/StyleDemoA.vue'),
+    meta: {
+      title: '方案A - Indigo Fintech',
+      hideInMenu: true,
+      requiresAuth: false,
+      transition: 'fade'
+    }
+  },
+  {
+    path: '/style-demo/b',
+    name: 'StyleDemoB',
+    component: () => import('@/views/StyleDemo/StyleDemoB.vue'),
+    meta: {
+      title: '方案B - Minimal SaaS',
+      hideInMenu: true,
+      requiresAuth: false,
+      transition: 'fade'
+    }
+  },
+  {
+    path: '/style-demo/c',
+    name: 'StyleDemoC',
+    component: () => import('@/views/StyleDemo/StyleDemoC.vue'),
+    meta: {
+      title: '方案C - Dark Tech',
+      hideInMenu: true,
+      requiresAuth: false,
+      transition: 'fade'
+    }
+  },
+  {
+    path: '/style-demo/d',
+    name: 'StyleDemoD',
+    component: () => import('@/views/StyleDemo/StyleDemoD.vue'),
+    meta: {
+      title: '方案D - Glassmorphism',
+      hideInMenu: true,
+      requiresAuth: false,
+      transition: 'fade'
+    }
+  },
+  {
+    path: '/style-demo/e',
+    name: 'StyleDemoE',
+    component: () => import('@/views/StyleDemo/StyleDemoE.vue'),
+    meta: {
+      title: '方案E - Gradient Mesh',
+      hideInMenu: true,
+      requiresAuth: false,
+      transition: 'fade'
+    }
+  },
+  {
+    path: '/style-demo/f',
+    name: 'StyleDemoF',
+    component: () => import('@/views/StyleDemo/StyleDemoF.vue'),
+    meta: {
+      title: '方案F - Neumorphism',
+      hideInMenu: true,
+      requiresAuth: false,
+      transition: 'fade'
+    }
+  },
+  {
+    path: '/style-demo/g',
+    name: 'StyleDemoG',
+    component: () => import('@/views/StyleDemo/StyleDemoG.vue'),
+    meta: {
+      title: '方案G - Brutalist',
+      hideInMenu: true,
+      requiresAuth: false,
+      transition: 'fade'
+    }
+  },
+  {
+    path: '/style-demo/h',
+    name: 'StyleDemoH',
+    component: () => import('@/views/StyleDemo/StyleDemoH.vue'),
+    meta: {
+      title: '方案H - Nature',
+      hideInMenu: true,
+      requiresAuth: false,
+      transition: 'fade'
+    }
+  },
   {
     path: '/paper',
     name: 'PaperTrading',

@@ -1,0 +1,195 @@
+// 方案 F: Neumorphism - 新拟态柔和风
+[data-style="neumorphism"] {
+  // ==================== 页面背景 ====================
+  --style-bg-page: #e0e5ec;
+  --style-bg-card: #e0e5ec;
+  --style-bg-sidebar: #e0e5ec;
+  --style-bg-header: #e0e5ec;
+
+  // ==================== 主色系 ====================
+  // 使用柔和的蓝灰色，符合新拟态的中性风格
+  --style-primary: #5a6d7e;
+  --style-primary-light: #7a8d9e;
+  --style-primary-dark: #4a5d6e;
+  --style-primary-rgb: 90, 109, 126;
+  --style-gradient-primary: linear-gradient(135deg, #5a6d7e, #7a8d9e);
+
+  // ==================== 功能色 ====================
+  --style-success: #00cec9;
+  --style-warning: #fdcb6e;
+  --style-danger: #ff7675;
+  --style-info: #74b9ff;
+
+  // ==================== 文字颜色 ====================
+  --style-text-primary: #2d3436;
+  --style-text-secondary: #636e72;
+  --style-text-muted: #b2bec3;
+  --style-text-placeholder: #dfe6e9;
+
+  // ==================== 边框 ====================
+  --style-border-color: transparent;
+  --style-border-color-light: transparent;
+  --style-border-color-lighter: transparent;
+
+  // ==================== 圆角 ====================
+  --style-border-radius-sm: 10px;
+  --style-border-radius-md: 15px;
+  --style-border-radius-lg: 20px;
+  --style-border-radius-xl: 25px;
+
+  // ==================== 新拟态阴影 ====================
+  --style-shadow-sm: 4px 4px 8px #a3b1c6, -4px -4px 8px #ffffff;
+  --style-shadow-md: 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff;
+  --style-shadow-lg: 12px 12px 24px #a3b1c6, -12px -12px 24px #ffffff;
+  --style-shadow-inset: inset 4px 4px 8px #a3b1c6, inset -4px -4px 8px #ffffff;
+
+  // ==================== Element Plus 变量覆盖 ====================
+  --el-color-primary: #5a6d7e;
+  --el-color-primary-light-3: #7a8d9e;
+  --el-color-primary-light-5: #9aadb8;
+  --el-color-primary-light-7: #bbc9d2;
+  --el-color-primary-light-8: #d5dfe5;
+  --el-color-primary-light-9: #eef2f5;
+  --el-color-primary-dark-2: #4a5d6e;
+
+  --el-color-success: #00cec9;
+  --el-color-warning: #fdcb6e;
+  --el-color-danger: #ff7675;
+  --el-color-info: #74b9ff;
+
+  --el-bg-color-page: #e0e5ec;
+  --el-bg-color: #e0e5ec;
+  --el-bg-color-overlay: #e0e5ec;
+
+  --el-text-color-primary: #2d3436;
+  --el-text-color-regular: #4a5568;
+  --el-text-color-secondary: #636e72;
+  --el-text-color-placeholder: #b2bec3;
+
+  --el-border-color: transparent;
+  --el-border-color-light: transparent;
+  --el-border-color-lighter: transparent;
+
+  --el-fill-color-blank: #e0e5ec;
+  --el-fill-color: #e0e5ec;
+  --el-fill-color-light: #e0e5ec;
+
+  --el-border-radius-base: 15px;
+  --el-border-radius-small: 10px;
+  --el-border-radius-round: 25px;
+
+  // ==================== 组件样式覆盖 ====================
+  body {
+    background: var(--style-bg-page);
+  }
+
+  // 新拟态卡片
+  .el-card {
+    background: var(--style-bg-card);
+    border-radius: var(--style-border-radius-xl);
+    box-shadow: var(--style-shadow-md);
+    border: none;
+
+    &:hover {
+      box-shadow: var(--style-shadow-lg);
+    }
+  }
+
+  // 新拟态按钮
+  .el-button {
+    background: var(--style-bg-page);
+    border: none;
+    box-shadow: var(--style-shadow-sm);
+
+    &:hover {
+      box-shadow: var(--style-shadow-md);
+    }
+
+    &:active {
+      box-shadow: var(--style-shadow-inset);
+    }
+  }
+
+  .el-button--primary {
+    background: var(--el-color-primary);
+    color: #ffffff !important;
+    box-shadow: 4px 4px 8px rgba(90, 109, 126, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.8);
+
+    &:hover {
+      background: var(--el-color-primary-light-3);
+      color: #ffffff !important;
+    }
+
+    &:active {
+      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    &:disabled {
+      color: #ffffff !important;
+      opacity: 0.6;
+    }
+  }
+
+  // 确保大型提交按钮在 Neumorphism 主题下文字可见
+  .large-analysis-btn.el-button,
+  .large-batch-btn.el-button,
+  .submit-btn.el-button--primary {
+    color: #ffffff !important;
+
+    &:disabled {
+      color: #ffffff !important;
+    }
+  }
+
+  // 新拟态输入框
+  .el-input__wrapper {
+    background: var(--style-bg-page);
+    border-radius: var(--style-border-radius-md);
+    box-shadow: var(--style-shadow-inset) !important;
+    border: none;
+
+    &:focus-within {
+      box-shadow: var(--style-shadow-inset), 0 0 0 2px rgba(90, 109, 126, 0.3) !important;
+    }
+  }
+
+  // 侧边栏
+  .el-aside,
+  .el-menu {
+    background: var(--style-bg-sidebar);
+    box-shadow: var(--style-shadow-sm);
+  }
+
+  .el-menu-item {
+    margin: 4px 8px;
+    border-radius: var(--style-border-radius-sm);
+
+    &:hover {
+      background: var(--style-bg-page);
+      box-shadow: var(--style-shadow-sm);
+    }
+
+    &.is-active {
+      background: var(--style-bg-page);
+      box-shadow: var(--style-shadow-inset);
+      color: var(--el-color-primary);
+    }
+  }
+
+  // 表格
+  .el-table {
+    background: var(--style-bg-page);
+    border-radius: var(--style-border-radius-lg);
+    box-shadow: var(--style-shadow-md);
+
+    --el-table-bg-color: transparent;
+    --el-table-tr-bg-color: transparent;
+    --el-table-header-bg-color: transparent;
+  }
+
+  // 标签页
+  .el-tabs__item.is-active {
+    box-shadow: var(--style-shadow-inset);
+    border-radius: var(--style-border-radius-sm);
+  }
+}

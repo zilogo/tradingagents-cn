@@ -2,11 +2,92 @@ import { defineStore } from 'pinia'
 import type { RouteLocationNormalized } from 'vue-router'
 import { useStorage } from '@vueuse/core'
 
+// 风格主题类型定义
+export type StyleTheme =
+  | 'indigo-fintech'
+  | 'minimal-saas'
+  | 'dark-tech'
+  | 'glassmorphism'
+  | 'gradient-mesh'
+  | 'neumorphism'
+  | 'brutalist'
+  | 'nature'
+
+// 风格配置接口
+export interface StyleConfig {
+  id: StyleTheme
+  name: string
+  description: string
+  isDark: boolean
+  primaryColor: string
+}
+
+// 8 种风格配置
+export const STYLE_CONFIGS: Record<StyleTheme, StyleConfig> = {
+  'indigo-fintech': {
+    id: 'indigo-fintech',
+    name: 'Indigo Fintech',
+    description: '专业金融科技感',
+    isDark: false,
+    primaryColor: '#6366f1'
+  },
+  'minimal-saas': {
+    id: 'minimal-saas',
+    name: 'Minimal SaaS',
+    description: '极简主义企业级',
+    isDark: false,
+    primaryColor: '#3b82f6'
+  },
+  'dark-tech': {
+    id: 'dark-tech',
+    name: 'Dark Tech',
+    description: '交易终端风格',
+    isDark: true,
+    primaryColor: '#38bdf8'
+  },
+  'glassmorphism': {
+    id: 'glassmorphism',
+    name: 'Glassmorphism',
+    description: '玻璃拟态现代感',
+    isDark: false,
+    primaryColor: '#667eea'
+  },
+  'gradient-mesh': {
+    id: 'gradient-mesh',
+    name: 'Gradient Mesh',
+    description: '多彩渐变创意风',
+    isDark: false,
+    primaryColor: '#c44cff'
+  },
+  'neumorphism': {
+    id: 'neumorphism',
+    name: 'Neumorphism',
+    description: '新拟态柔和风',
+    isDark: false,
+    primaryColor: '#6c5ce7'
+  },
+  'brutalist': {
+    id: 'brutalist',
+    name: 'Brutalist',
+    description: '粗野主义个性风',
+    isDark: false,
+    primaryColor: '#111111'
+  },
+  'nature': {
+    id: 'nature',
+    name: 'Nature',
+    description: '自然有机绿色风',
+    isDark: false,
+    primaryColor: '#22c55e'
+  }
+}
+
 export interface AppState {
   // 应用基础状态
   loading: boolean
   loadingProgress: number
   theme: 'light' | 'dark' | 'auto'
+  styleTheme: StyleTheme
   language: 'zh-CN' | 'en-US'
 
   // 网络状态
@@ -41,6 +122,7 @@ export const useAppStore = defineStore('app', {
     loading: false,
     loadingProgress: 0,
     theme: (useStorage('app-theme', 'auto').value || 'auto') as 'light' | 'dark' | 'auto',
+    styleTheme: (useStorage('app-style-theme', 'indigo-fintech').value || 'indigo-fintech') as StyleTheme,
     language: (useStorage('app-language', 'zh-CN').value || 'zh-CN') as 'zh-CN' | 'en-US',
 
     isOnline: navigator.onLine,
@@ -97,8 +179,19 @@ export const useAppStore = defineStore('app', {
         buildTime: this.buildTime,
         apiVersion: this.apiVersion,
         theme: this.theme,
+        styleTheme: this.styleTheme,
         language: this.language
       }
+    },
+
+    // 当前风格配置
+    currentStyleConfig(): StyleConfig {
+      return STYLE_CONFIGS[this.styleTheme]
+    },
+
+    // 当前风格是否为暗色
+    isStyleDark(): boolean {
+      return STYLE_CONFIGS[this.styleTheme].isDark
     }
   },
 
@@ -130,16 +223,41 @@ export const useAppStore = defineStore('app', {
       localStorage.setItem('app-theme', theme)
     },
     
-    // 应用主题
+    // 应用主题（保留兼容旧逻辑）
     applyTheme() {
-      const isDark = this.isDarkTheme
-      document.documentElement.classList.toggle('dark', isDark)
-      
-      // 更新meta标签
+      // 新风格系统接管明暗模式
+      this.applyStyleTheme()
+    },
+
+    // 设置风格主题
+    setStyleTheme(style: StyleTheme) {
+      this.styleTheme = style
+      this.applyStyleTheme()
+      // 持久化到 localStorage
+      localStorage.setItem('app-style-theme', style)
+    },
+
+    // 应用风格主题
+    applyStyleTheme() {
+      const config = STYLE_CONFIGS[this.styleTheme]
+
+      // 设置 data-style 属性
+      document.documentElement.setAttribute('data-style', this.styleTheme)
+
+      // 根据风格的明暗属性设置 dark class
+      if (config.isDark) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+
+      // 更新 meta theme-color 标签
       const themeColorMeta = document.querySelector('meta[name="theme-color"]')
       if (themeColorMeta) {
-        themeColorMeta.setAttribute('content', isDark ? '#1f2937' : '#409EFF')
+        themeColorMeta.setAttribute('content', config.primaryColor)
       }
+
+      console.log('🎨 风格已切换:', config.name)
     },
     
     // 切换语言

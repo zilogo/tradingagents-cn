@@ -17,6 +17,7 @@ import { useAppStore } from './stores/app'
 import { setupTokenRefreshTimer } from './utils/auth'
 import './styles/index.scss'
 import './styles/dark-theme.scss'
+import './styles/themes/index.scss'
 
 // 创建应用实例
 const app = createApp(App)
@@ -85,9 +86,9 @@ const initApp = async () => {
 
     console.log('🔄 初始化应用状态...')
 
-    // 应用主题
-    appStore.applyTheme()
-    console.log('🎨 主题已应用:', appStore.theme)
+    // 应用风格主题
+    appStore.applyStyleTheme()
+    console.log('🎨 风格主题已应用:', appStore.styleTheme)
 
     // 设置网络状态监听
     window.addEventListener('online', () => {

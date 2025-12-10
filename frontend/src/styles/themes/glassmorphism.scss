@@ -1,0 +1,195 @@
+// 方案 D: Glassmorphism - 玻璃拟态现代感
+[data-style="glassmorphism"] {
+  // ==================== 页面背景 ====================
+  --style-bg-page: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --style-bg-card: rgba(255, 255, 255, 0.15);
+  --style-bg-sidebar: rgba(255, 255, 255, 0.1);
+  --style-bg-header: rgba(255, 255, 255, 0.1);
+
+  // ==================== 主色系 ====================
+  --style-primary: #667eea;
+  --style-primary-light: #7c8cf0;
+  --style-primary-dark: #5a6fd6;
+  --style-primary-rgb: 102, 126, 234;
+  --style-gradient-primary: linear-gradient(135deg, #667eea, #764ba2);
+
+  // ==================== 功能色 ====================
+  --style-success: #4ade80;
+  --style-warning: #fbbf24;
+  --style-danger: #f87171;
+  --style-info: rgba(255, 255, 255, 0.7);
+
+  // ==================== 文字颜色 ====================
+  --style-text-primary: #ffffff;
+  --style-text-secondary: rgba(255, 255, 255, 0.9);
+  --style-text-muted: rgba(255, 255, 255, 0.7);
+  --style-text-placeholder: rgba(255, 255, 255, 0.5);
+
+  // ==================== 边框 ====================
+  --style-border-color: rgba(255, 255, 255, 0.3);
+  --style-border-color-light: rgba(255, 255, 255, 0.2);
+  --style-border-color-lighter: rgba(255, 255, 255, 0.1);
+
+  // ==================== 圆角 ====================
+  --style-border-radius-sm: 10px;
+  --style-border-radius-md: 16px;
+  --style-border-radius-lg: 20px;
+  --style-border-radius-xl: 24px;
+
+  // ==================== 阴影 ====================
+  --style-shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --style-shadow-md: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --style-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.15);
+
+  // ==================== 特殊效果 ====================
+  --style-backdrop-blur: blur(20px);
+  --style-card-border: 1px solid rgba(255, 255, 255, 0.3);
+
+  // ==================== Element Plus 变量覆盖 ====================
+  --el-color-primary: #ffffff;
+  --el-color-primary-light-3: rgba(255, 255, 255, 0.9);
+  --el-color-primary-light-5: rgba(255, 255, 255, 0.7);
+  --el-color-primary-light-7: rgba(255, 255, 255, 0.5);
+  --el-color-primary-light-8: rgba(255, 255, 255, 0.3);
+  --el-color-primary-light-9: rgba(255, 255, 255, 0.15);
+  --el-color-primary-dark-2: #e0e0e0;
+
+  --el-color-success: #4ade80;
+  --el-color-warning: #fbbf24;
+  --el-color-danger: #f87171;
+  --el-color-info: rgba(255, 255, 255, 0.7);
+
+  --el-bg-color-page: transparent;
+  --el-bg-color: rgba(255, 255, 255, 0.15);
+  --el-bg-color-overlay: rgba(255, 255, 255, 0.2);
+
+  --el-text-color-primary: #ffffff;
+  --el-text-color-regular: rgba(255, 255, 255, 0.9);
+  --el-text-color-secondary: rgba(255, 255, 255, 0.7);
+  --el-text-color-placeholder: rgba(255, 255, 255, 0.5);
+
+  --el-border-color: rgba(255, 255, 255, 0.3);
+  --el-border-color-light: rgba(255, 255, 255, 0.2);
+  --el-border-color-lighter: rgba(255, 255, 255, 0.1);
+
+  --el-fill-color-blank: rgba(255, 255, 255, 0.1);
+  --el-fill-color: rgba(255, 255, 255, 0.15);
+  --el-fill-color-light: rgba(255, 255, 255, 0.08);
+
+  --el-border-radius-base: 16px;
+  --el-border-radius-small: 10px;
+  --el-border-radius-round: 24px;
+
+  // ==================== 组件样式覆盖 ====================
+  body {
+    background: var(--style-bg-page);
+    min-height: 100vh;
+
+    // 装饰圆形
+    &::before,
+    &::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    &::before {
+      top: -20%;
+      right: -10%;
+      width: 60%;
+      height: 60%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &::after {
+      bottom: -20%;
+      left: -10%;
+      width: 50%;
+      height: 50%;
+      background: rgba(118, 75, 162, 0.2);
+    }
+  }
+
+  // 玻璃卡片
+  .el-card {
+    background: var(--style-bg-card);
+    backdrop-filter: var(--style-backdrop-blur);
+    border-radius: var(--style-border-radius-xl);
+    border: var(--style-card-border);
+    box-shadow: var(--style-shadow-md);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+  }
+
+  // 玻璃按钮
+  .el-button--primary {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+
+    &:hover,
+    &:focus {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  // 玻璃输入框
+  .el-input__wrapper {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    border-radius: var(--style-border-radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    .el-input__inner {
+      color: #ffffff;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+
+  // 侧边栏
+  .el-aside,
+  .el-menu {
+    background: var(--style-bg-sidebar);
+    backdrop-filter: var(--style-backdrop-blur);
+  }
+
+  .el-menu-item {
+    color: rgba(255, 255, 255, 0.8);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &.is-active {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+  }
+
+  // 表格
+  .el-table {
+    background: transparent;
+    --el-table-bg-color: transparent;
+    --el-table-tr-bg-color: transparent;
+    --el-table-header-bg-color: rgba(255, 255, 255, 0.1);
+    --el-table-text-color: #ffffff;
+    --el-table-header-text-color: #ffffff;
+  }
+
+  // 对话框
+  .el-dialog {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: var(--style-backdrop-blur);
+    border: var(--style-card-border);
+  }
+}

@@ -1,0 +1,133 @@
+// 方案 B: Minimal SaaS - 极简主义企业级
+[data-style="minimal-saas"] {
+  // ==================== 页面背景 ====================
+  --style-bg-page: #fafafa;
+  --style-bg-card: #ffffff;
+  --style-bg-sidebar: #ffffff;
+  --style-bg-header: #ffffff;
+
+  // ==================== 主色系 ====================
+  --style-primary: #3b82f6;
+  --style-primary-light: #60a5fa;
+  --style-primary-dark: #2563eb;
+  --style-primary-rgb: 59, 130, 246;
+  --style-gradient-primary: linear-gradient(135deg, #3b82f6, #60a5fa);
+
+  // ==================== 功能色 ====================
+  --style-success: #22c55e;
+  --style-warning: #eab308;
+  --style-danger: #ef4444;
+  --style-info: #6b7280;
+
+  // ==================== 文字颜色 ====================
+  --style-text-primary: #111827;
+  --style-text-secondary: #6b7280;
+  --style-text-muted: #9ca3af;
+  --style-text-placeholder: #d1d5db;
+
+  // ==================== 边框 ====================
+  --style-border-color: #e5e7eb;
+  --style-border-color-light: #f3f4f6;
+  --style-border-color-lighter: #f9fafb;
+
+  // ==================== 圆角 ====================
+  --style-border-radius-sm: 4px;
+  --style-border-radius-md: 6px;
+  --style-border-radius-lg: 8px;
+  --style-border-radius-xl: 10px;
+
+  // ==================== 阴影 ====================
+  --style-shadow-sm: none;
+  --style-shadow-md: none;
+  --style-shadow-lg: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  // ==================== Element Plus 变量覆盖 ====================
+  --el-color-primary: #3b82f6;
+  --el-color-primary-light-3: #60a5fa;
+  --el-color-primary-light-5: #93c5fd;
+  --el-color-primary-light-7: #bfdbfe;
+  --el-color-primary-light-8: #dbeafe;
+  --el-color-primary-light-9: #eff6ff;
+  --el-color-primary-dark-2: #2563eb;
+
+  --el-color-success: #22c55e;
+  --el-color-warning: #eab308;
+  --el-color-danger: #ef4444;
+  --el-color-info: #6b7280;
+
+  --el-bg-color-page: #fafafa;
+  --el-bg-color: #ffffff;
+  --el-bg-color-overlay: #ffffff;
+
+  --el-text-color-primary: #111827;
+  --el-text-color-regular: #374151;
+  --el-text-color-secondary: #6b7280;
+  --el-text-color-placeholder: #9ca3af;
+
+  --el-border-color: #e5e7eb;
+  --el-border-color-light: #f3f4f6;
+  --el-border-color-lighter: #f9fafb;
+
+  --el-border-radius-base: 6px;
+  --el-border-radius-small: 4px;
+  --el-border-radius-round: 10px;
+
+  // ==================== 组件样式覆盖 ====================
+  body {
+    background: var(--style-bg-page);
+  }
+
+  // 极简卡片 - 无阴影，细边框
+  .el-card {
+    border-radius: var(--style-border-radius-lg);
+    box-shadow: none;
+    border: 1px solid var(--style-border-color);
+  }
+
+  // 扁平按钮
+  .el-button--primary {
+    background: var(--el-color-primary);
+    border: none;
+    box-shadow: none;
+
+    &:hover,
+    &:focus {
+      background: var(--el-color-primary-light-3);
+    }
+  }
+
+  // 输入框
+  .el-input__wrapper {
+    border-radius: var(--style-border-radius-md);
+    box-shadow: none !important;
+    border: 1px solid var(--style-border-color);
+
+    &:focus-within {
+      border-color: var(--el-color-primary);
+    }
+  }
+
+  // 菜单激活 - 左侧色条指示器
+  .el-menu-item.is-active {
+    background: transparent;
+    color: var(--el-color-primary);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 3px;
+      background: var(--el-color-primary);
+      border-radius: 0 2px 2px 0;
+    }
+  }
+
+  // 表格
+  .el-table {
+    border-radius: var(--style-border-radius-lg);
+    border: 1px solid var(--style-border-color);
+  }
+}

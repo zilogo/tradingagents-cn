@@ -1,0 +1,155 @@
+// 方案 E: Gradient Mesh - 多彩渐变创意风
+[data-style="gradient-mesh"] {
+  // ==================== 页面背景 ====================
+  --style-bg-page: #fafafa;
+  --style-bg-card: rgba(255, 255, 255, 0.85);
+  --style-bg-sidebar: rgba(255, 255, 255, 0.9);
+  --style-bg-header: rgba(255, 255, 255, 0.9);
+
+  // ==================== 主色系 ====================
+  --style-primary: #c44cff;
+  --style-primary-light: #d77fff;
+  --style-primary-dark: #a020f0;
+  --style-primary-rgb: 196, 76, 255;
+  --style-gradient-primary: linear-gradient(135deg, #ff6b9d, #c44cff);
+
+  // ==================== 功能色 ====================
+  --style-success: #4cffa1;
+  --style-warning: #ffcc00;
+  --style-danger: #ff6b9d;
+  --style-info: #4cc9ff;
+
+  // ==================== 文字颜色 ====================
+  --style-text-primary: #1a1a2e;
+  --style-text-secondary: #4a4a6a;
+  --style-text-muted: #8888aa;
+  --style-text-placeholder: #aaaacc;
+
+  // ==================== 边框 ====================
+  --style-border-color: #e0e0ee;
+  --style-border-color-light: #f0f0f8;
+  --style-border-color-lighter: #f8f8fc;
+
+  // ==================== 圆角 ====================
+  --style-border-radius-sm: 12px;
+  --style-border-radius-md: 16px;
+  --style-border-radius-lg: 24px;
+  --style-border-radius-xl: 32px;
+
+  // ==================== 阴影 ====================
+  --style-shadow-sm: 0 4px 12px rgba(196, 76, 255, 0.08);
+  --style-shadow-md: 0 8px 24px rgba(196, 76, 255, 0.12);
+  --style-shadow-lg: 0 16px 48px rgba(196, 76, 255, 0.16);
+
+  // ==================== Element Plus 变量覆盖 ====================
+  --el-color-primary: #c44cff;
+  --el-color-primary-light-3: #d77fff;
+  --el-color-primary-light-5: #e5a8ff;
+  --el-color-primary-light-7: #f0ccff;
+  --el-color-primary-light-8: #f7e6ff;
+  --el-color-primary-light-9: #fcf5ff;
+  --el-color-primary-dark-2: #a020f0;
+
+  --el-color-success: #10b981;
+  --el-color-warning: #f59e0b;
+  --el-color-danger: #ff6b9d;
+  --el-color-info: #4cc9ff;
+
+  --el-bg-color-page: #fafafa;
+  --el-bg-color: rgba(255, 255, 255, 0.85);
+  --el-bg-color-overlay: #ffffff;
+
+  --el-text-color-primary: #1a1a2e;
+  --el-text-color-regular: #3a3a5a;
+  --el-text-color-secondary: #4a4a6a;
+  --el-text-color-placeholder: #8888aa;
+
+  --el-border-color: #e0e0ee;
+  --el-border-color-light: #f0f0f8;
+  --el-border-color-lighter: #f8f8fc;
+
+  --el-border-radius-base: 16px;
+  --el-border-radius-small: 12px;
+  --el-border-radius-round: 32px;
+
+  // ==================== 组件样式覆盖 ====================
+  body {
+    background: var(--style-bg-page);
+    position: relative;
+
+    // 渐变圆形装饰
+    &::before {
+      content: '';
+      position: fixed;
+      top: -30%;
+      right: -20%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(circle, rgba(255, 107, 157, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    &::after {
+      content: '';
+      position: fixed;
+      bottom: -30%;
+      left: -20%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(circle, rgba(76, 201, 255, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+  }
+
+  // 创意卡片
+  .el-card {
+    background: var(--style-bg-card);
+    backdrop-filter: blur(10px);
+    border-radius: var(--style-border-radius-lg);
+    border: 1px solid var(--style-border-color-light);
+    box-shadow: var(--style-shadow-md);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--style-shadow-lg);
+    }
+  }
+
+  // 渐变按钮
+  .el-button--primary {
+    background: var(--style-gradient-primary);
+    border: none;
+    box-shadow: 0 4px 16px rgba(196, 76, 255, 0.3);
+
+    &:hover,
+    &:focus {
+      background: linear-gradient(135deg, #ff8cb3, #d77fff);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(196, 76, 255, 0.4);
+    }
+  }
+
+  // 输入框
+  .el-input__wrapper {
+    border-radius: var(--style-border-radius-md);
+    background: rgba(255, 255, 255, 0.9);
+
+    &:focus-within {
+      box-shadow: 0 0 0 3px rgba(196, 76, 255, 0.15) !important;
+    }
+  }
+
+  // 菜单
+  .el-menu-item.is-active {
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(196, 76, 255, 0.1));
+    color: var(--el-color-primary);
+  }
+
+  // 表格
+  .el-table {
+    border-radius: var(--style-border-radius-lg);
+    overflow: hidden;
+  }
+}

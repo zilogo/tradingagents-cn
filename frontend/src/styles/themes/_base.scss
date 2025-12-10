@@ -1,0 +1,70 @@
+// 基础 CSS 变量定义
+// 所有风格都会覆盖这些变量
+
+:root {
+  // ==================== 页面背景 ====================
+  --style-bg-page: #f8fafc;
+  --style-bg-card: #ffffff;
+  --style-bg-sidebar: #ffffff;
+  --style-bg-header: #ffffff;
+
+  // ==================== 主色系 ====================
+  --style-primary: #409eff;
+  --style-primary-light: #66b1ff;
+  --style-primary-dark: #3a8ee6;
+  --style-primary-rgb: 64, 158, 255;
+  --style-gradient-primary: linear-gradient(135deg, var(--style-primary), var(--style-primary-light));
+
+  // ==================== 功能色 ====================
+  --style-success: #67c23a;
+  --style-warning: #e6a23c;
+  --style-danger: #f56c6c;
+  --style-info: #909399;
+
+  // ==================== 文字颜色 ====================
+  --style-text-primary: #303133;
+  --style-text-secondary: #606266;
+  --style-text-muted: #909399;
+  --style-text-placeholder: #c0c4cc;
+
+  // ==================== 边框 ====================
+  --style-border-color: #dcdfe6;
+  --style-border-color-light: #e4e7ed;
+  --style-border-color-lighter: #ebeef5;
+
+  // ==================== 圆角 ====================
+  --style-border-radius-sm: 4px;
+  --style-border-radius-md: 8px;
+  --style-border-radius-lg: 12px;
+  --style-border-radius-xl: 20px;
+
+  // ==================== 阴影 ====================
+  --style-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --style-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --style-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  // ==================== 特殊效果 ====================
+  --style-backdrop-blur: blur(0);
+  --style-card-border: 1px solid var(--style-border-color-lighter);
+
+  // ==================== 过渡动画 ====================
+  --style-transition-fast: 0.15s ease;
+  --style-transition-normal: 0.3s ease;
+  --style-transition-slow: 0.5s ease;
+}
+
+// 全局过渡效果
+html,
+body {
+  transition:
+    background-color var(--style-transition-normal),
+    color var(--style-transition-normal);
+}
+
+.el-card,
+.el-button,
+.el-input__wrapper,
+.el-menu,
+.el-aside {
+  transition: all var(--style-transition-normal);
+}

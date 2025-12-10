@@ -1,0 +1,124 @@
+// 方案 A: Indigo Fintech - 专业金融科技感
+[data-style="indigo-fintech"] {
+  // ==================== 页面背景 ====================
+  --style-bg-page: #f8fafc;
+  --style-bg-card: #ffffff;
+  --style-bg-sidebar: #ffffff;
+  --style-bg-header: #ffffff;
+
+  // ==================== 主色系 ====================
+  --style-primary: #6366f1;
+  --style-primary-light: #818cf8;
+  --style-primary-dark: #4f46e5;
+  --style-primary-rgb: 99, 102, 241;
+  --style-gradient-primary: linear-gradient(135deg, #6366f1, #8b5cf6);
+
+  // ==================== 功能色 ====================
+  --style-success: #10b981;
+  --style-warning: #f59e0b;
+  --style-danger: #f43f5e;
+  --style-info: #3b82f6;
+
+  // ==================== 文字颜色 ====================
+  --style-text-primary: #1e293b;
+  --style-text-secondary: #64748b;
+  --style-text-muted: #94a3b8;
+  --style-text-placeholder: #cbd5e1;
+
+  // ==================== 边框 ====================
+  --style-border-color: #e2e8f0;
+  --style-border-color-light: #f1f5f9;
+  --style-border-color-lighter: #f8fafc;
+
+  // ==================== 圆角 ====================
+  --style-border-radius-sm: 6px;
+  --style-border-radius-md: 12px;
+  --style-border-radius-lg: 16px;
+  --style-border-radius-xl: 20px;
+
+  // ==================== 阴影 ====================
+  --style-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --style-shadow-md: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --style-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  // ==================== Element Plus 变量覆盖 ====================
+  --el-color-primary: #6366f1;
+  --el-color-primary-light-3: #818cf8;
+  --el-color-primary-light-5: #a5b4fc;
+  --el-color-primary-light-7: #c7d2fe;
+  --el-color-primary-light-8: #e0e7ff;
+  --el-color-primary-light-9: #eef2ff;
+  --el-color-primary-dark-2: #4f46e5;
+
+  --el-color-success: #10b981;
+  --el-color-warning: #f59e0b;
+  --el-color-danger: #f43f5e;
+  --el-color-info: #64748b;
+
+  --el-bg-color-page: #f8fafc;
+  --el-bg-color: #ffffff;
+  --el-bg-color-overlay: #ffffff;
+
+  --el-text-color-primary: #1e293b;
+  --el-text-color-regular: #475569;
+  --el-text-color-secondary: #64748b;
+  --el-text-color-placeholder: #94a3b8;
+
+  --el-border-color: #e2e8f0;
+  --el-border-color-light: #f1f5f9;
+  --el-border-color-lighter: #f8fafc;
+
+  --el-border-radius-base: 12px;
+  --el-border-radius-small: 8px;
+  --el-border-radius-round: 20px;
+
+  // ==================== 组件样式覆盖 ====================
+  body {
+    background: var(--style-bg-page);
+  }
+
+  // 卡片样式
+  .el-card {
+    border-radius: var(--style-border-radius-xl);
+    box-shadow: var(--style-shadow-md);
+    border: none;
+
+    &:hover {
+      box-shadow: var(--style-shadow-lg);
+    }
+  }
+
+  // 主按钮渐变
+  .el-button--primary {
+    background: var(--style-gradient-primary);
+    border: none;
+
+    &:hover,
+    &:focus {
+      background: linear-gradient(135deg, #818cf8, #a78bfa);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+    }
+  }
+
+  // 输入框聚焦发光
+  .el-input__wrapper {
+    border-radius: var(--style-border-radius-md);
+
+    &:focus-within {
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+    }
+  }
+
+  // 菜单激活状态
+  .el-menu-item.is-active {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08));
+    color: var(--el-color-primary);
+  }
+
+  // 表格优化
+  .el-table {
+    border-radius: var(--style-border-radius-lg);
+    overflow: hidden;
+  }
+}

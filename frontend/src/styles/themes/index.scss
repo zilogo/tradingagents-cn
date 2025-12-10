@@ -1,0 +1,14 @@
+// 主题样式入口文件
+// 导入基础变量和所有 8 种风格
+
+@import 'base';
+
+// 8 种风格主题
+@import 'indigo-fintech';   // 方案 A - 专业金融科技感
+@import 'minimal-saas';     // 方案 B - 极简主义企业级
+@import 'dark-tech';        // 方案 C - 交易终端风格
+@import 'glassmorphism';    // 方案 D - 玻璃拟态现代感
+@import 'gradient-mesh';    // 方案 E - 多彩渐变创意风
+@import 'neumorphism';      // 方案 F - 新拟态柔和风
+@import 'brutalist';        // 方案 G - 粗野主义个性风
+@import 'nature';           // 方案 H - 自然有机绿色风

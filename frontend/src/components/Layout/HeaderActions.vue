@@ -1,14 +1,7 @@
 <template>
   <div class="header-actions">
-    <!-- 主题切换 -->
-    <el-tooltip content="切换主题" placement="bottom">
-      <el-button type="text" @click="toggleTheme" class="action-btn">
-        <el-icon>
-          <Sunny v-if="appStore.isDarkTheme" />
-          <Moon v-else />
-        </el-icon>
-      </el-button>
-    </el-tooltip>
+    <!-- 风格切换 -->
+    <StyleSwitcher />
 
     <!-- 全屏切换 -->
     <el-tooltip content="全屏" placement="bottom">
@@ -62,19 +55,16 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { useAppStore } from '@/stores/app'
 import { useNotificationStore } from '@/stores/notifications'
 import { useAuthStore } from '@/stores/auth'
 import { storeToRefs } from 'pinia'
 import {
-  Sunny,
-  Moon,
   FullScreen,
   Bell,
   QuestionFilled
 } from '@element-plus/icons-vue'
+import StyleSwitcher from '@/components/StyleSwitcher.vue'
 
-const appStore = useAppStore()
 const authStore = useAuthStore()
 const notifStore = useNotificationStore()
 const { unreadCount, items } = storeToRefs(notifStore)
@@ -83,7 +73,6 @@ const filter = ref<'all' | 'unread'>('all')
 let timerCount: any = null
 let timerList: any = null
 
-const toggleTheme = () => { appStore.toggleTheme() }
 const toggleFullscreen = () => {
   if (document.fullscreenElement) document.exitFullscreen()
   else document.documentElement.requestFullscreen()
