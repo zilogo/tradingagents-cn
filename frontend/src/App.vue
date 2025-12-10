@@ -157,7 +157,7 @@ const handleWizardComplete = async (data: any) => {
     localStorage.setItem('config_wizard_completed', 'true')
 
     ElMessage.success({
-      message: '配置完成！欢迎使用 TradingAgents-CN',
+      message: '配置完成！欢迎使用 EOS3-Trader',
       duration: 3000
     })
   } catch (error) {

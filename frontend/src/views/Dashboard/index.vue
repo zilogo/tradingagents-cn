@@ -4,8 +4,8 @@
     <div class="welcome-section">
       <div class="welcome-content">
         <h1 class="welcome-title">
-          欢迎使用 TradingAgents-CN
-          <span class="version-badge">v1.0.0-preview</span>
+          欢迎使用 EOS3-Trader
+          <span class="version-badge">Beta-v1.0</span>
         </h1>
         <p class="welcome-subtitle">
           现代化的多智能体股票分析学习平台，辅助你掌握更全面的市场视角分析股票

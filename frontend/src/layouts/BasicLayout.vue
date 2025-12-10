@@ -8,9 +8,9 @@
     >
       <div class="sidebar-header">
         <div class="logo">
-          <img src="/logo.svg" alt="TradingAgents-CN" />
+          <img src="/logo.svg" alt="EOS3-Trader" />
           <span v-show="!appStore.sidebarCollapsed" class="logo-text">
-            TradingAgents-CN
+            EOS3-Trader
           </span>
         </div>
       </div>

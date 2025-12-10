@@ -418,7 +418,7 @@ router.beforeEach(async (to, from, next) => {
   // 设置页面标题
   const title = to.meta.title as string
   if (title) {
-    document.title = `${title} - TradingAgents-CN`
+    document.title = `${title} - EOS3-Trader`
   }
 
   console.log('🚦 路由守卫检查:', {

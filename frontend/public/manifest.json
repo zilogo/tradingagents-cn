@@ -1,6 +1,6 @@
 {
-  "name": "TradingAgents-CN",
-  "short_name": "TradingAgents",
+  "name": "EOS3-Trader",
+  "short_name": "EOS3-Trader",
   "description": "多智能体股票分析学习平台",
   "start_url": "/",
   "display": "standalone",
