@@ -20,6 +20,7 @@
     "echarts": "^5.4.3",
     "element-plus": "^2.4.4",
     "lodash-es": "^4.17.21",
+    "lucide-vue-next": "^0.559.0",
     "marked": "^16.2.0",
     "mermaid": "^10",
     "nprogress": "^0.2.0",
