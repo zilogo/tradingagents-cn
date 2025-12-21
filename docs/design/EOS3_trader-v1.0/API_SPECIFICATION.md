@@ -820,17 +820,178 @@
 
 ---
 
-## 9. 报告导出模块 `/api/reports`
+## 9. 报告管理模块 `/api/reports`
 
-### 9.1 导出分析报告
+### 9.1 获取报告列表
 
-**GET** `/api/reports/analysis/{analysis_id}/export`
+**GET** `/api/reports/list`
+
+**请求头**: `Authorization: Bearer <token>`
 
 **查询参数**:
-- `format`: 导出格式 (pdf/docx/html/markdown)
-- `include_charts`: 是否包含图表 (默认 true)
+- `page`: 页码 (默认 1)
+- `page_size`: 每页数量 (默认 20，最大 100)
+- `search_keyword`: 搜索关键词 (可选)
+- `market_filter`: 市场筛选 (A股/港股/美股，可选)
+- `start_date`: 开始日期 (YYYY-MM-DD，可选)
+- `end_date`: 结束日期 (YYYY-MM-DD，可选)
+- `stock_code`: 股票代码 (可选)
 
-### 9.2 批量导出
+**响应**:
+```json
+{
+  "success": true,
+  "data": {
+    "reports": [
+      {
+        "id": "report_id",
+        "analysis_id": "analysis_uuid",
+        "title": "平安银行(000001) 分析报告",
+        "stock_code": "000001",
+        "stock_name": "平安银行",
+        "market_type": "A股",
+        "model_info": "gpt-4",
+        "type": "single",
+        "format": "markdown",
+        "status": "completed",
+        "created_at": "2025-12-11T10:30:00+08:00",
+        "analysis_date": "2025-12-11",
+        "analysts": ["market", "fundamentals", "news", "sentiment"],
+        "research_depth": 1,
+        "summary": "分析摘要...",
+        "file_size": 12345,
+        "source": "analysis_reports",
+        "task_id": "task_uuid"
+      }
+    ],
+    "total": 150,
+    "page": 1,
+    "page_size": 20
+  },
+  "message": "报告列表获取成功"
+}
+```
+
+### 9.2 获取报告详情 ⭐
+
+**GET** `/api/reports/{report_id}/detail`
+
+**请求头**: `Authorization: Bearer <token>`
+
+**路径参数**:
+- `report_id`: 报告ID (支持 ObjectId / analysis_id / task_id)
+
+**响应**:
+```json
+{
+  "success": true,
+  "data": {
+    "id": "report_id",
+    "analysis_id": "analysis_uuid",
+    "stock_symbol": "000001",
+    "stock_name": "平安银行",
+    "model_info": "gpt-4",
+    "analysis_date": "2025-12-11",
+    "status": "completed",
+    "created_at": "2025-12-11T10:30:00+08:00",
+    "updated_at": "2025-12-11T10:32:00+08:00",
+    "analysts": ["market", "fundamentals", "news", "sentiment"],
+    "research_depth": 1,
+    "summary": "基于技术面、基本面、新闻面和情绪面的综合分析...",
+    "reports": {
+      "market_report": "# 市场技术分析\n\n技术指标显示...",
+      "fundamentals_report": "# 基本面分析\n\nPE估值...",
+      "news_report": "# 新闻事件分析\n\n近期重要新闻...",
+      "sentiment_report": "# 市场情绪分析\n\n市场情绪偏向...",
+      "bull_researcher": "# 多头研究员\n\n看多理由...",
+      "bear_researcher": "# 空头研究员\n\n看空理由...",
+      "research_team_decision": "# 研究经理决策\n\n综合判断...",
+      "trader_investment_plan": "# 交易员计划\n\n建议操作...",
+      "risky_analyst": "# 激进分析师\n\n激进策略...",
+      "safe_analyst": "# 保守分析师\n\n保守策略...",
+      "neutral_analyst": "# 中性分析师\n\n中性策略...",
+      "risk_management_decision": "# 投资组合经理\n\n风险管理...",
+      "final_trade_decision": "# 最终交易决策\n\n最终建议..."
+    },
+    "recommendation": "建议买入，目标价15元",
+    "confidence_score": 0.75,
+    "risk_level": "中等",
+    "key_points": [
+      "技术面显示突破关键阻力位",
+      "基本面估值合理，PE处于历史低位",
+      "近期利好消息密集"
+    ],
+    "execution_time": 65.5,
+    "tokens_used": 12500,
+    "source": "analysis_reports",
+    "task_id": "task_uuid"
+  },
+  "message": "报告详情获取成功"
+}
+```
+
+**说明**:
+- `reports` 字段包含所有13个分析模块的完整内容
+- 支持从 `analysis_reports` 或 `analysis_tasks` 集合中查询
+- 自动转换UTC时间为UTC+8
+
+### 9.3 获取报告模块内容
+
+**GET** `/api/reports/{report_id}/content/{module}`
+
+**请求头**: `Authorization: Bearer <token>`
+
+**路径参数**:
+- `report_id`: 报告ID
+- `module`: 模块名称 (如 market_report, fundamentals_report 等)
+
+**响应**:
+```json
+{
+  "success": true,
+  "data": {
+    "module": "market_report",
+    "content": "# 市场技术分析\n\n技术指标显示...",
+    "content_type": "markdown"
+  },
+  "message": "模块内容获取成功"
+}
+```
+
+### 9.4 下载报告
+
+**GET** `/api/reports/{report_id}/download`
+
+**请求头**: `Authorization: Bearer <token>`
+
+**查询参数**:
+- `format`: 下载格式 (markdown/json/docx/pdf，默认 markdown)
+
+**支持格式**:
+- `markdown`: Markdown 格式（默认）
+- `json`: JSON 格式（包含完整数据）
+- `docx`: Word 文档格式（需要 pandoc）
+- `pdf`: PDF 格式（需要 pandoc 和 PDF 引擎）
+
+**响应**:
+- 返回文件流，自动下载
+- 文件名格式: `{stock_code}_{date}_report.{ext}`
+
+### 9.5 删除报告
+
+**DELETE** `/api/reports/{report_id}`
+
+**请求头**: `Authorization: Bearer <token>`
+
+**响应**:
+```json
+{
+  "success": true,
+  "message": "报告删除成功"
+}
+```
+
+### 9.6 批量导出（旧接口，待废弃）
 
 **POST** `/api/reports/batch-export`
 
